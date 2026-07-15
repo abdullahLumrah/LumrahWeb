@@ -5,7 +5,7 @@
       <div class="container flex items-center justify-between">
         <a href="/" class="logo flex items-center">
           <span class="logo-icon">L</span>
-          <span class="logo-text">Lumrah<span class="text-gradient">Web</span></span>
+          <span class="logo-text">Lumrah</span>
         </a>
         
         <nav class="nav-links flex items-center">
