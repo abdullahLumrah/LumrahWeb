@@ -1,7 +1,12 @@
 <template>
   <div class="layout-wrapper">
+    <StarField />
+    <AuroraBackground />
+    <CursorGlow />
+    <ScrollProgress />
+
     <!-- Header / Navbar -->
-    <header class="navbar glass">
+    <header class="navbar glass" :class="{ 'navbar-scrolled': isScrolled }">
       <div class="container flex items-center justify-between">
         <a href="/" class="logo flex items-center">
           <span class="logo-icon">L</span>
@@ -55,6 +60,24 @@
   </div>
 </template>
 
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+
+const isScrolled = ref(false)
+
+function handleScroll() {
+  isScrolled.value = window.scrollY > 24
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+</script>
+
 <style scoped>
 .layout-wrapper {
   display: flex;
@@ -77,6 +100,17 @@ main {
   z-index: 1000;
   padding: 0.75rem 2rem;
   border-radius: var(--radius-full);
+  transition: var(--transition-normal);
+}
+
+.navbar-scrolled {
+  top: 0.6rem;
+  width: calc(100% - 3rem);
+  max-width: 1000px;
+  padding: 0.55rem 1.75rem;
+  background: rgba(9, 12, 24, 0.75);
+  box-shadow: var(--shadow-glow), 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-color-glow);
 }
 
 .logo {
@@ -89,6 +123,7 @@ main {
 }
 
 .logo-icon {
+  position: relative;
   background: var(--gradient-brand);
   color: #fff;
   width: 2.2rem;
@@ -100,6 +135,29 @@ main {
   font-size: 1.2rem;
   font-weight: 900;
   box-shadow: var(--shadow-glow);
+}
+
+.logo-icon::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-secondary);
+  opacity: 0;
+  animation: logo-pulse 2.8s ease-out infinite;
+}
+
+@keyframes logo-pulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+.logo-text {
+  background: linear-gradient(90deg, var(--text-primary) 0%, var(--color-secondary) 50%, var(--text-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-text 6s linear infinite;
 }
 
 .logo-text {

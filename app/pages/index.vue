@@ -11,7 +11,7 @@
           <div class="badge glass">
             <span class="badge-dot"></span> Premier IT & Digital Solutions
           </div>
-          <h1>Architecting Next-Gen <br /><span class="text-gradient">IT Solutions</span></h1>
+          <h1>Architecting Next-Gen <br /><span class="text-gradient-animated">IT Solutions</span></h1>
           <p class="hero-desc">
             We engineer premium web applications, bespoke mobile apps, and scalable digital architectures that drive operational efficiency and elevate your brand's global presence.
           </p>
@@ -22,7 +22,7 @@
         </div>
         
         <div class="hero-visual flex items-center justify-center">
-          <div class="visual-card glass animate-float">
+          <div v-tilt="8" class="visual-card glass animate-float border-sweep">
             <div class="visual-header">
               <div class="dot red"></div>
               <div class="dot yellow"></div>
@@ -34,12 +34,12 @@
               <div class="visual-line" style="width: 70%"></div>
               <div class="visual-line active" style="width: 95%; background: var(--gradient-accent);"></div>
               <div class="visual-stats grid">
-                <div class="stat-box glass">
-                  <div class="stat-val text-gradient">25+</div>
+                <div ref="statOneRef" class="stat-box glass">
+                  <div class="stat-val text-gradient">{{ statOne }}+</div>
                   <div class="stat-lbl">Systems Deployed</div>
                 </div>
-                <div class="stat-box glass">
-                  <div class="stat-val text-gradient-accent">100%</div>
+                <div ref="statTwoRef" class="stat-box glass">
+                  <div class="stat-val text-gradient-accent">{{ statTwo }}%</div>
                   <div class="stat-lbl">Client Trust</div>
                 </div>
               </div>
@@ -49,10 +49,15 @@
       </div>
     </section>
 
+    <!-- Tech Marquee -->
+    <div class="marquee-section">
+      <TechMarquee />
+    </div>
+
     <!-- IT Solutions Section -->
     <section id="solutions" class="section solutions-section">
       <div class="container">
-        <div class="section-header text-center">
+        <div v-reveal class="section-header text-center">
           <h2 class="section-title">Comprehensive <span class="text-gradient">IT Solutions</span></h2>
           <p class="section-subtitle">Empowering modern enterprises with scalable applications, robust infrastructure, and digital strategies.</p>
         </div>
@@ -60,7 +65,7 @@
         <!-- Interactive Category Switcher -->
         <div class="solutions-grid grid grid-cols-3">
           <!-- Solution 1: Web Applications -->
-          <div class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 0 }" @click="activeSolution = 0">
+          <div v-reveal.scale="0" v-tilt class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 0 }" @click="activeSolution = 0">
             <div class="solution-icon-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
@@ -70,7 +75,7 @@
           </div>
 
           <!-- Solution 2: Mobile Apps -->
-          <div class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 1 }" @click="activeSolution = 1">
+          <div v-reveal.scale="80" v-tilt class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 1 }" @click="activeSolution = 1">
             <div class="solution-icon-wrapper secondary">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
             </div>
@@ -80,7 +85,7 @@
           </div>
 
           <!-- Solution 3: Cloud & DevOps -->
-          <div class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 2 }" @click="activeSolution = 2">
+          <div v-reveal.scale="160" v-tilt class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 2 }" @click="activeSolution = 2">
             <div class="solution-icon-wrapper accent">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             </div>
@@ -90,7 +95,7 @@
           </div>
 
           <!-- Solution 4: Enterprise ERP/CRM -->
-          <div class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 3 }" @click="activeSolution = 3">
+          <div v-reveal.scale="0" v-tilt class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 3 }" @click="activeSolution = 3">
             <div class="solution-icon-wrapper">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
@@ -100,7 +105,7 @@
           </div>
 
           <!-- Solution 5: AI & Smart Integration -->
-          <div class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 4 }" @click="activeSolution = 4">
+          <div v-reveal.scale="80" v-tilt class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 4 }" @click="activeSolution = 4">
             <div class="solution-icon-wrapper secondary">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             </div>
@@ -110,7 +115,7 @@
           </div>
 
           <!-- Solution 6: Cyber Security -->
-          <div class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 5 }" @click="activeSolution = 5">
+          <div v-reveal.scale="160" v-tilt class="solution-card glass-interactive" :class="{ 'active-card': activeSolution === 5 }" @click="activeSolution = 5">
             <div class="solution-icon-wrapper accent">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
@@ -121,30 +126,32 @@
         </div>
 
         <!-- Detail Panel (Shows detailed specifications based on clicked card) -->
-        <div class="solution-detail-panel glass animate-float" style="animation-delay: -1s;">
-          <h4 class="text-gradient">{{ solutionsList[activeSolution].title }}</h4>
-          <p>{{ solutionsList[activeSolution].details }}</p>
-          <div class="features-sublist grid grid-cols-2">
-            <div v-for="(feat, idx) in solutionsList[activeSolution].subfeats" :key="idx" class="flex items-center spec-item">
-              <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              <span>{{ feat }}</span>
+        <Transition name="detail-fade" mode="out-in">
+          <div :key="activeSolution" class="solution-detail-panel glass animate-float" style="animation-delay: -1s;">
+            <h4 class="text-gradient">{{ solutionsList[activeSolution].title }}</h4>
+            <p>{{ solutionsList[activeSolution].details }}</p>
+            <div class="features-sublist grid grid-cols-2">
+              <div v-for="(feat, idx) in solutionsList[activeSolution].subfeats" :key="idx" class="flex items-center spec-item">
+                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>{{ feat }}</span>
+              </div>
             </div>
           </div>
-        </div>
+        </Transition>
       </div>
     </section>
 
     <!-- Co-Founders Section -->
     <section id="about" class="section founders-section glass">
       <div class="container">
-        <div class="section-header text-center">
+        <div v-reveal class="section-header text-center">
           <h2 class="section-title">Meet the <span class="text-gradient">Founders</span></h2>
           <p class="section-subtitle">Blending technical architecture with operational excellence to build high-performance products.</p>
         </div>
 
         <div class="founders-grid grid grid-cols-2">
           <!-- Founder 1: Abdullah Arshad -->
-          <div class="founder-card glass-interactive">
+          <div v-reveal.left v-tilt="6" class="founder-card glass-interactive">
             <div class="founder-profile flex items-center">
               <div class="avatar-placeholder flex items-center justify-center">
                 <span>AA</span>
@@ -163,7 +170,7 @@
           </div>
 
           <!-- Founder 2: Danish Khan -->
-          <div class="founder-card glass-interactive">
+          <div v-reveal.right v-tilt="6" class="founder-card glass-interactive">
             <div class="founder-profile flex items-center">
               <div class="avatar-placeholder secondary flex items-center justify-center">
                 <span>DK</span>
@@ -187,8 +194,8 @@
     <!-- Contact CTA Section -->
     <section id="contact" class="section contact-section text-center">
       <div class="container">
-        <div class="contact-card glass">
-          <h2 class="text-gradient">Partner with LumrahWeb</h2>
+        <div v-reveal.scale class="contact-card glass border-sweep">
+          <h2 class="text-gradient">Partner with Lumrah</h2>
           <p>Ready to deploy high-end digital solutions or configure your systems? Drop us a line and let's get started.</p>
           <form class="quote-form grid" @submit.prevent="submitForm">
             <div class="grid grid-cols-2">
@@ -203,8 +210,12 @@
               <option value="other">General IT Consultation</option>
             </select>
             <textarea placeholder="Tell us about your project requirements..." class="input-field glass textarea-field" required></textarea>
-            <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">
-              {{ submitted ? 'Request Sent!' : 'Send Request' }}
+            <button type="submit" class="btn btn-primary btn-submit" style="margin-top: 1rem;" :class="{ 'is-success': submitted }">
+              <span v-if="!submitted">Send Request</span>
+              <span v-else class="success-check flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Request Sent!
+              </span>
             </button>
           </form>
         </div>
@@ -215,9 +226,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useCountUp } from '~/composables/useCountUp'
+
+const { value: statOne, elRef: statOneRef } = useCountUp(25, { duration: 1400 })
+const { value: statTwo, elRef: statTwoRef } = useCountUp(100, { duration: 1400 })
 
 useHead({
-  title: 'LumrahWeb - Premium IT Solutions & Application Development',
+  title: 'Lumrah - Premium IT Solutions & Application Development',
   meta: [
     { name: 'description', content: 'Enterprise IT Solutions, Mobile App & Web Application Development founded by Abdullah Arshad & Danish Khan.' }
   ]
@@ -645,6 +660,43 @@ const solutionsList = [
 .textarea-field {
   resize: vertical;
   min-height: 120px;
+}
+
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit.is-success {
+  background: linear-gradient(135deg, #22c55e 0%, var(--color-secondary) 100%);
+}
+
+.success-check {
+  gap: 0.5rem;
+}
+
+/* Tech Marquee Section */
+.marquee-section {
+  position: relative;
+  padding: 1rem 0 2rem;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Detail Panel Transition */
+.detail-fade-enter-active,
+.detail-fade-leave-active {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.detail-fade-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.detail-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-16px);
 }
 
 /* Responsive adjustments */
