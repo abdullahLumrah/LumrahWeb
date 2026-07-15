@@ -151,11 +151,10 @@
               </div>
               <div class="founder-meta">
                 <h3>Abdullah Arshad</h3>
-                <p class="title text-gradient">Co-Founder &amp; CEO</p>
               </div>
             </div>
             <p class="bio">
-              Abdullah is a senior technology architect and developer specializing in scalable cloud configurations, Vue/Nuxt.js web applications, and system infrastructure design. He leads our product design and development architecture.
+              Abdullah is a product and strategic specialist, leading the high-level roadmap, strategic partnerships, and business alignment of our custom IT ecosystems.
             </p>
             <div class="social-links flex">
               <a href="https://github.com/abdullahLumrah" target="_blank" class="social-link">GitHub</a>
@@ -171,11 +170,10 @@
               </div>
               <div class="founder-meta">
                 <h3>Danish Khan</h3>
-                <p class="title text-gradient-accent">Co-Founder &amp; CTO</p>
               </div>
             </div>
             <p class="bio">
-              Danish oversees systems engineering, native mobile app architecture, and database engineering. With a strong background in operational flows and API design, he ensures our products run at maximum scale and efficiency.
+              Danish is a technology architect and engineering leader, overseeing system integrations, mobile application development, and robust backend architectures.
             </p>
             <div class="social-links flex">
               <a href="#" class="social-link">GitHub</a>
@@ -537,6 +535,10 @@ const solutionsList = [
   font-size: 1.5rem;
   font-weight: 800;
   box-shadow: var(--shadow-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .avatar-placeholder.secondary {
